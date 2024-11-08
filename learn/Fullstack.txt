@@ -1,0 +1,46 @@
+====Frontend============: 
+Es lo que el usuario ve e interactúa.
+
+Lenguajes para estructura y estilo:
+HTML/CSS/SCSS
+
+Diseño responsivo (Flexbox): 
+Asegura que la interfaz se adapte a diferentes dispositivos y tamaños de pantalla.
+
+Lenguajes de programación: 
+Permite la interacción y la lógica de la interfaz de usuario.
+Ejemplo: Javascript (Angular, React, Vue...)
+
+
+
+====Backend============: 
+La lógica, bases de datos y servidores.
+
+Lenguajes de programación:
+- Javascript (ExpressJS Package, MongoDB Package, MySQL Package)
+- PHP
+- Java
+- C#
+- C++
+- C
+- Python
+- Ruby
+
+Servidores:
+Node.js, Apache...
+
+API: nos permite la comunicación entre el frontend y el backend, también para la comunicación entre diferentes apps.
+Ejemplo: RESTful y GraphQL
+
+Autenticación:
+Controla el acceso de los usuarios y protege los datos.
+
+Bases de datos:
+- MySQL
+- PostgreSQL
+- MongoDB
+
+Infraestructura y DevOps:
+- Hosting (AWS, Azure, Digital Ocean...): Donde se despliega la app.
+- Contenedores (Docker): Facilita el despliegue y la escalabilidad de la app.
+- Gestión de versiones (Git): Control de versiones del código para rastrear cambios.

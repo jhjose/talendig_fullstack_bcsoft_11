@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Boxes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Contenedor principal que usa flexbox para organizar los contenedores lado a lado*/
+        .container {
+            display: flex; /* Activa el módulo flexbox layout */
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 20px;
+            min-height: 400px;
+        }
+
+        /* Estilo para los contenedores donde se pueden soltar las cajaas */
+        .box-container {
+            width: 300px;
+            min-height: 400px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: #3498db;
+            border-radius: 4px;
+            cursor: move;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: transform 0.2s;
+        }
+
+        /* Efecto de hover para las cajas */
+        .box:hover {
+            transform: scale(1.05)
+        }
+
+        /* Clase que se aplica durante el arrastre */
+        .box.dragging  {
+            opacity: 0.5; /* Hace la caja semi-transparente mientras se arrastra */
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Estilos para las instrucciones */
+        .instructions {
+            text-align: center;
+            margin: 20px;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        Arrastra las cajas de un contenedor a otro
+    </div>
+
+    <!--Contenedor principal que alberga los dos contenedores de cajas-->
+    <div class="container">
+        <!-- Primer contenedor -->
+        <div class="box-container" id="container1">
+            <h2>Contenedor 1</h2>
+            <div class="box" draggable="true">Caja 1</div>
+            <div class="box" draggable="true">Caja 2</div>
+            <div class="box" draggable="true">Caja 3</div>
+        </div>
+
+        <!-- Segundo Contenedor -->
+         <div class="box-container" id="container2">
+            <h2>Contenedor 2</h2>
+         </div>
+    </div>
+
+    <script>
+        // Espera a que el DOM esté completamente cargado antes de ejecutar el código
+        document.addEventListener('DOMContentLoaded', ()=>{
+            // Selecciona todas las cajas y contenedores
+            const boxes = document.querySelectorAll('.box');
+            const containers = document.querySelectorAll('.box-container');
+
+            // Configura los eventos para cada caja
+            boxes.forEach(box => {
+                // Evento que se dispara cuando comienza el arrastre
+                box.addEventListener('dragstart', (e)=>{
+                    box.classList.add('dragging'); // Añade clase para efecto visual
+                    // Guarda el contenido de la caja en el objeto de transferencia
+                    e.dataTransfer.setData('text/plain', box.textContent);
+                });
+
+                // Evento que se dispara cuando termina el arrastre
+                box.addEventListener('dragend', ()=>{
+                    box.classList.remove('dragging'); // Quita la clase de arrastre
+                });
+            });
+
+            // Confira los eventos para cada contenedor
+            containers.forEach(container => {
+                // Evento que se dispara cuando un elemento arrastrable está sobre el contenedor
+                container.addEventListener('dragover', (e)=>{
+                    e.preventDefault();
+                });
+
+                // Evento que se dispara cuando se suelta un elemento en el contenedor
+                container.addEventListener('drop', (e)=>{
+                    e.preventDefault(); // Previene el comportamiento por defecto
+
+                    // Busca la caja que está siendo arrastrada
+                    const draggingBox = document.querySelector('.dragging');
+                    if(draggingBox){
+                        // Mueve la caja al nuevo contenedor
+                        container.appendChild(draggingBox);
+                    }
+                })
+            })
+        });
+    </script>
+</body>
+</html>

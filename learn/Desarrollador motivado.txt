@@ -1,0 +1,40 @@
+Los estudiantes de programación suelen abandonar por varias razones principales:
+
+Sensación abrumadora:
+La cantidad de tecnologías a aprender parece infinita
+Cada nuevo concepto parece más complejo que el anterior
+No saben por dónde empezar o cómo organizar su aprendizaje
+
+
+Frustración inicial:
+Los errores son frecuentes al principio
+El progreso parece lento
+Comparación con otros desarrolladores más experimentados
+
+Sin embargo, hay varios beneficios importantes que pueden servir como motivación:
+
+Beneficios Profesionales:
+Alta demanda laboral global
+Salarios competitivos
+Posibilidad de trabajo remoto
+Múltiples oportunidades de crecimiento
+
+
+Beneficios Prácticos:
+Capacidad de crear proyectos completos de forma independiente
+Entendimiento profundo de cómo funcionan las aplicaciones
+Versatilidad para adaptarse a diferentes roles y proyectos
+Posibilidad de emprender con proyectos propios
+
+Para mantenerse motivado, recomiendo:
+Establecer metas pequeñas y alcanzables
+Celebrar cada logro, por pequeño que sea
+Unirse a comunidades de desarrolladores
+Trabajar en proyectos personales que te apasionen
+Visualizar el objetivo final: ser capaz de crear aplicaciones completas
+
+
+Papel del Docente:
+- Desempeño 
+- Conexión
+- Seguimiento individual
