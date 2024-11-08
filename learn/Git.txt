@@ -40,13 +40,16 @@ git push origin <rama>
 Ejemplos de nombres de ramas: master, main, development, feauture-login-bug, feauture-register-form-style
 
 
+# Descargar todas las ramas
+git fetch
+
+
 # Ver todas las ramas 
 git branch -a
 
 
 # Crear una nueva rama
 git branch <nombre-rama>
-
 
 
 # Cambiar de rama
