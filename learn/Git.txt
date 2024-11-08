@@ -1,0 +1,78 @@
+=============Git:
+Es un sistema de control de versiones que permite rastrear cambios en el código fuente durante el desarrollo de software.
+
+
+COMANDOS EN LA TERMINAL:
+
+# Iniciar un repositorio
+git init
+
+
+# Clonar un repositorio existente
+git clone <url-repositorio>
+
+
+# Ver estado de archivos
+git status
+
+
+# Agregar archivos al área de preparación 
+(si los archivos están en ROJO no están preparados, si están en VERDE si están preparados)
+
+git add <archivo>     # Agrega archivo específico
+git add .       # Agrega todos los archivos
+
+
+# Confirmar cambios y agregar una descripción
+git commit -m "mensaje descriptivo"
+
+Nota: es recomendable que cada mensaje descriptivo tenga la acción. Acciones: Added, Created, Updated, Deleted...
+Ejemplo: git commit -m "Updated drog and drop of the landing page."
+
+
+# Obtener cambios del repositorio remoto
+git pull origin <rama>
+
+
+# Subir cambios al repositorio remoto (Github, Bitbucket, Gitlab...)
+git push origin <rama>
+
+Ejemplos de nombres de ramas: master, main, development, feauture-login-bug, feauture-register-form-style
+
+
+# Ver todas las ramas 
+git branch -a
+
+
+# Crear una nueva rama
+git branch <nombre-rama>
+
+
+
+# Cambiar de rama
+git checkout <nombre-rama>
+
+
+# Configurar nombre de usuario global
+git config --global user.name "Tu Nombre"
+
+
+# Configurar email global
+git config --global user.email "tu.email@ejemplo.com"
+
+
+# Ver la configuración actual
+git config --list
+
+
+# Configurar usuario solo para un repositorio específico (sin --global)
+git config user.name "Tu nombre"
+git config user.email "tu.email@ejemplo"
+
+
+# Configurar el editor predeterminado (ejemplo con VS Code)
+git config --global core.editor "code --wait"
+
+
+# Generar una nueva clave SSH (recomendado para autenticación)
+ssh-keygen -t ed25519 -C "tu.email@ejemplo.com"
