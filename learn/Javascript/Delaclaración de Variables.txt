@@ -1,0 +1,16 @@
+# VARIABLE
+Permite almacenar información, como números, cadenas de texto, objetos, entre otros.
+
+¿Qué puedo hacer con una variable?
+Acceder a los datos y modificarlos cuando lo necesite.
+
+¿Cómo se declaran las variables?
+
+1. var: Declara variables globales o locales para funciones sin importar el alcance de bloque.
+Fue la forma principal de declarar variables antes de ES6, pero hoy se prefiere evitar su uso.
+
+2. let: Declara variables con alcance de bloque (solo es accesible dentro del bloque {...} donde se declara).
+Se introdujo en ES6 y es más segura para evitar errores de ámbito.
+
+3. const: son variables que no pueden ser reasignadas o modificadas una vez establecidas. 
+Su alcance es de bloque, como let.

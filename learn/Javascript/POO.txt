@@ -1,0 +1,43 @@
+POO - Programación Orientada a Objetos:
+Es un paradigma de programación que se bassa en la creación de objetos 
+que encapsulan datos y funciones.
+
+Conceptos prncipales de POO en Javascript:
+
+1. Clases y Objetos
+--- Una clase es una plantilla para crear objetos.
+--- Los objetos son instancias de una clase.
+--- El constructor inicializa las propiedades del objeto.
+
+2. Herencia
+--- Permite que una clase herede propiedades y métodos de otra.
+--- Se usa extends para heredar.
+--- super() llama al constructor de la clase padre.
+
+3. Encapsulación
+--- Oculta los detalles internos del objeto.
+--- Usa campos privados con # (característica moderna).
+--- Implementa getters y setters para acceder a datos privados.
+
+4. Polimorfismo
+--- Permite que diferentes clases implementen los mismos métodos.
+--- Cada clase puede tener su propia implementación.
+--- Facilita el código reutilizable y flexible.
+
+5. Composición
+--- Una alternativa a la herencia.
+--- Un objeto contiene otros objetos.
+--- Favorece la Composición sobre la herencia.
+
+6. Patrones avanzados
+--- Singleton: garantiza una única instancia.
+--- Factory Method: delega la creación de objetos.
+--- Observe, Strategy, etc.
+
+7. Mixins
+--- Añade funcionalidad a las clases sin herencia.
+--- Permite reutilizar código entre clases no relacionadas.
+
+
+Objetivos de los principios en POO:
+Son un conjunto de reglas y mejores prácticas a seguir al diseñar una estructura de clase.

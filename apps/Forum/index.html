@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro de Debates</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <h1>Foro de Debates</h1>
+    <div class="form-container">
+        <h2>Crear nuevo debate</h2>
+        <div class="form-group">
+            <input type="text" id="username" placeholder="Tu nombre de usuario">
+        </div>
+        <div class="form-group">
+            <input type="text" id="debateTitle" placeholder="Título del debate">
+        </div>
+        <div class="form-group">
+            <textarea id="debateContent" placeholder="Contenido del debate" rows="4"></textarea>
+        </div>
+        <button id="createDebateBtn">Crear Debate</button>
+    </div>
+
+    <div id="debatesContainer"></div>
+
+    <script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* Estilos generales y variables CSS */
+:root {
+	--primary-color: #2c3e50;
+	--accent-color: #3498db;
+	--text-color: #ecf0f1;
+	--secondary-color: #e74c3c;
+}
+
+body {
+	font-family: 'Arial', sans-serif;
+	background: linear-gradient(45deg, #1a1a2e, #16213e);
+	color: #ecf0f1;
+	margin: 0;
+	padding: 20px;
+	min-height: 100vh;
+}
+
+/* Contenedor principal con animación de fadeIn */
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+	from {opacity: 0; transform: translateY(20px);}
+	to {opacity: 1; transform: translateY(0);}
+}
+
+/* Estilos del título con animación */
+h1 {
+	text-align: center;
+	color: #3498db;
+	font-size: 2.5em;
+	margin-bottom: 30px;
+	animation: titlePulse 2s infinite;
+}
+
+@keyframes titlePulse {
+	0% {transform: scale(1);}
+	50% {tranform: scale(1.05);}
+	100% {transform: scale(1);}
+}
+
+/* Estilos para los botones con hover effect */
+.planet-button {
+	background: #2c3e50;
+	color: #ecf0f1;
+	border: none;
+	padding: 10px 20px;
+	margin: 5px;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 1em;
+}
+
+.planet-button:hover {
+	background: #3498db;
+	transform: scale(1.1);
+	box-shadow: 0 0 15px rgba(52,152,219,0.5);
+}
+
+/* Contenedor de información del planeta con animación */
+#planetInfo {
+	blackground: rgba(44,62,80,0.8);
+	padding: 20px;
+	border-radius: 10px;
+	margin-top: 20px;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: all 0.5s ease;
+	backdrop-filter: blur(10px);
+}
+
+#planetInfo.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Estilos para la tarjeta del planeta */
+.planet-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+.planet-stats {
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	gap: 15px;
+	margin-top: 20px;
+	width: 100%;
+}
+
+.stat-item {
+	background: rgba(255,255,255,0.1);
+	padding: 10px;
+	border-radius: 8px;
+	text-align: center;
+	transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+	transform: scale(1.05);
+	background: rgba(255,255,255,1.2);
+}
+
+/* Estilos para la imagen del planeta */
+.planet-circle {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin: 20px auto;
+	position: relative;
+	animation: rotate 20s linear infinite;
+	background: #3498db;
+	box-shadow: 0 0 30px rgba(52,152,219,0.5);
+}
+
+@keyframes rotate {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);
+}
+
+/* Anillos para Saturno */
+.saturn-rings {
+	position: absolute;
+	width: 250px;
+	height: 30px;
+	background: rgba(255,255,255,0.2);
+	left: -25px;
+	top: 85px;
+	border-radius: 50%;
+	tranform: rotateX(75deg);
+}
