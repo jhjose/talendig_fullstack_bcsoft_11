@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animación 3D</title>
+    <style>
+        body { margin: 0; }
+        #scene-container { 
+            width: 100vw; 
+            height: 100vh;
+            background: #f0f0f0;
+        }
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background: #2196F3;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <div id="scene-container"></div>
+    <div class="controls">
+        <button onclick="objeto.reproducir(2)">Reproducir</button>
+        <button onclick="objeto.pausar()">Pausar</button>
+        <button onclick="objeto.detener()">Detener</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        class Objeto3D {
+            constructor() {
+                this.setupScene();
+                this.setupCube();
+                this.setupAnimation();
+                this.animate();
+            }
+
+            setupScene() {
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                this.renderer = new THREE.WebGLRenderer();
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('scene-container').appendChild(this.renderer.domElement);
+                
+                // Ajustar la posición de la cámara
+                this.camera.position.z = 5;
+            }
+
+            setupCube() {
+                const geometry = new THREE.BoxGeometry();
+                const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+                this.cube = new THREE.Mesh(geometry, material);
+                this.scene.add(this.cube);
+
+                // Agregar luz
+                const light = new THREE.DirectionalLight(0xffffff, 1);
+                light.position.set(1, 1, 1);
+                this.scene.add(light);
+                
+                // Luz ambiental
+                const ambientLight = new THREE.AmbientLight(0x404040);
+                this.scene.add(ambientLight);
+            }
+
+            setupAnimation() {
+                this.frames = [
+                    {
+                        position: { x: 0, y: 0, z: 0 },
+                        rotation: { x: 0, y: 0, z: 0 },
+                        duration: 1000
+                    },
+                    {
+                        position: { x: 2, y: 1, z: 0 },
+                        rotation: { x: Math.PI/4, y: 0, z: 0 },
+                        duration: 1000
+                    },
+                    {
+                        position: { x: -2, y: 1, z: 0 },
+                        rotation: { x: Math.PI/4, y: Math.PI/2, z: Math.PI/4 },
+                        duration: 1000
+                    }
+                ];
+                
+                this.animating = false;
+                this.currentFrame = 0;
+                this.startTime = null;
+                this.pausedTime = null;
+            }
+
+            async reproducir(repeticiones = 1) {
+                this.animating = true;
+                this.repeticionesRestantes = repeticiones;
+                this.startTime = Date.now();
+                this.pausedTime = null;
+            }
+
+            pausar() {
+                if (this.animating) {
+                    this.animating = false;
+                    this.pausedTime = Date.now();
+                }
+            }
+
+            detener() {
+                this.animating = false;
+                this.currentFrame = 0;
+                this.startTime = null;
+                this.pausedTime = null;
+                this.cube.position.set(0, 0, 0);
+                this.cube.rotation.set(0, 0, 0);
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+
+                if (this.animating) {
+                    if (!this.startTime) this.startTime = Date.now();
+                    
+                    const currentTime = Date.now();
+                    const elapsedTime = currentTime - this.startTime;
+                    
+                    const currentFrame = this.frames[this.currentFrame];
+                    const nextFrame = this.frames[(this.currentFrame + 1) % this.frames.length];
+                    
+                    const frameDuration = currentFrame.duration;
+                    const progress = (elapsedTime % frameDuration) / frameDuration;
+                    
+                    if (elapsedTime >= frameDuration) {
+                        this.startTime = currentTime;
+                        this.currentFrame = (this.currentFrame + 1) % this.frames.length;
+                        
+                        if (this.currentFrame === 0) {
+                            this.repeticionesRestantes--;
+                            if (this.repeticionesRestantes <= 0) {
+                                this.detener();
+                            }
+                        }
+                    }
+                    
+                    // Interpolar posición y rotación
+                    this.cube.position.x = this.lerp(currentFrame.position.x, nextFrame.position.x, progress);
+                    this.cube.position.y = this.lerp(currentFrame.position.y, nextFrame.position.y, progress);
+                    this.cube.position.z = this.lerp(currentFrame.position.z, nextFrame.position.z, progress);
+                    
+                    this.cube.rotation.x = this.lerp(currentFrame.rotation.x, nextFrame.rotation.x, progress);
+                    this.cube.rotation.y = this.lerp(currentFrame.rotation.y, nextFrame.rotation.y, progress);
+                    this.cube.rotation.z = this.lerp(currentFrame.rotation.z, nextFrame.rotation.z, progress);
+                }
+
+                this.renderer.render(this.scene, this.camera);
+            }
+
+            lerp(start, end, progress) {
+                return start + (end - start) * progress;
+            }
+        }
+
+        // Crear instancia del objeto 3D
+        const objeto = new Objeto3D();
+
+        // Manejar cambios de tamaño de ventana
+        window.addEventListener('resize', () => {
+            objeto.camera.aspect = window.innerWidth / window.innerHeight;
+            objeto.camera.updateProjectionMatrix();
+            objeto.renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

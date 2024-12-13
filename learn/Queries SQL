@@ -1,0 +1,81 @@
+# 1. Crear una base de datos
+CREATE DATABASE NombreBaseDeDatos;
+
+use NombreBaseDeDatos;
+
+# 2. Crear una tabla
+CREATE TABLE Usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    email VARCHAR(100),
+    edad INT,
+    fecha_registro DATE,
+);
+
+
+# 3. Insertar datos
+INSERT INTO Usuarios (id, nombre, email, edad, fecha_registro)
+    VALUES (null, 'Juan Pérez', 'juan@example.com', 30, '2024-12-01');
+
+
+# 4. Consulta de datos
+SELECT * FROM Usuarios;
+
+SELECT nombre, email FROM Usuarios WHERE edad > 25;
+
+
+# 5. Actualizar datos
+UPDATE Usuarios SET edad = 31 WHERE id = 1;
+
+
+# 6. Eliminar datos
+DELETE FROM Usuarios WHERE id = 1;
+
+
+# 7. Crear relaciones entre tablas
+CREATE TABLE Pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    FOREIGN KEY (usuario_id) REFERENCES Usuarios(id),
+    fecha_pedido DATE,
+    total DECIMAL(10, 2),
+);
+
+
+# 8. Consultas con Join
+SELECT Usuarios.nombre, Pedidos.fecha_pedido, Pedidos.total
+    FROM Usuarios
+    INNER JOIN Pedidos ON Usuarios.id = Pedidos.usuario_id;
+
+
+# 9. Funciones agregadas
+SELECT COUNT(*) AS total_usuarios FROM Usuarios WHERE id > 5;
+
+SELECT AVG(edad) AS edad_promedio FROM Usuarios;
+
+
+# 10. Agrupamiento (GROUP BY)
+SELECT edad, COUNT(*) AS cantidad FROM Usuarios GROUP BY edad;
+
+
+# 11. Subconsultas
+SELECT nombre, email FROM Usuarios WHERE id IN (SELECT usuario_id FROM Pedidos WHERE total > 100);
+
+
+# 12. Indices
+CREATE INDEX idx_nombre ON Usuarios(nombre);
+
+
+# 13. Manejo de transacciones
+START TRANSACTION;
+INSERT INTO Usuarios (nombre, email, edad, fecha_registro) VALUES ('Alexia', 'alexia@example.com', 16, '2024-15-06');
+UPDATE Usuarios SET edad = 29 WHERE nombre = 'Alexia2';
+COMMIT; -- O usa ROLLBACK para deshacer cambios
+
+
+# 14. Cláusulas avanzadas
+-- LIMIT para paginación
+SELECT * FROM Usuarios WHERE id > variable_ultimo_id LIMIT 10 OFFSET 10;
+
+-- Ordenar resultados
+SELECT * FROM Usuarios ORDER BY edad ASC; -- ASC Y DESC

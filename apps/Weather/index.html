@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App del Clima</title>
+    <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body>
+    <form id="search-form" class="search-form">
+        <input type="text" id="city-input" placeholder="Buscar ciudad..." required>
+        <button type="submit">Buscar</button>
+        <button type="button" id="unit-toggle">°C/°F</button>
+    </form>
+
+    <!-- Contenedor principal para la información del clima -->
+    <main id="weather-container" class="weather-container" >
+        <!-- El contenido se llamará dinámicamente con Typescript -->
+    </main>
+
+    <script type="module">
+        import {WeatherApp} from './src/WeatherApp.ts';
+
+        // Inicializamos la aplicación cuando se carga el documento
+        document.addEventListener('DOMContentLoaded', ()=>{
+            new WeatherApp();
+        });
+    </script>
+</body>
+</html>

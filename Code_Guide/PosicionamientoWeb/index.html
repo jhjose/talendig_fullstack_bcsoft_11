@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"><!-- Especificamos el idioma del documento para SEO -->
+<head>
+    <!-- Conjunto de caracteres UTF-8 para soporte completo de caracteres -->
+    <meta charset="UTF-8">
+
+    <!-- Viewport para dispositivos móviles - crucial para SEO móvil -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título optimizado para SEO (55-65 caracteres) -->
+    <title>Document</title>
+
+    <!-- Meta descripción optimizada (155-160 caracteres) -->
+    <meta name="description" content="Descubre nuestra selección de chocolate orgánico premium.">
+
+    <!-- Palabras claves (aunque tienen menor peso en el SEO actual, algunos buscadores las consideran) -->
+    <meta name="keywords" 
+        content="cocholate orgánico, chocolate dominicano, chocolate artesanal, chocolate económico">
+
+    <!-- Control de indexación y seguimiento de enlaces -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph para mejor compartición en redes sociales -->
+    <meta property="og:title" content="Tienda de Chocolate Orgánico | Artesanal">
+    <meta property="og:description" content="Cocholate orgánico económico pero de alta calidad">
+    <meta property="og:image" content="https://ejemplo.com/images/chocolate-preview.jpg">
+    <meta property="og:url" content="https://ejemplo.com">
+
+    <!-- Twitter or X para compartir un post -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tienda de Chocolate Orgánico | Artesanal">
+    <meta name="twitter:image" content="https://ejemplo.com/images/chocolate-preview.jpg">
+
+    <!-- Canonical URL para evitar contenido duplicado -->
+    <link rel="canonical" href="https://ejemplo.com//chocolate-organico">
+
+    <!-- Schema.org para Rich Snippets -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Store",
+            "name": "CocholateArtesanal",
+            "description": "Tienda de chocolate orgánico premium",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Av. Reforma 123",
+                "addressLocality": "Santiago de los Caballeros",
+                "postalCode": "06500",
+                "addressCountry": "RD",
+            }
+        }
+    </script>
+
+    <!--Estilos CSS optimizados-->
+    <style>
+        /* Uso de clases semánticas para mejorar el mantenimiento */
+        .header {
+            background-color: #f8f9fa;
+            padding: 2rem;
+        }
+
+        /* Estilos responsivos para móviles */
+        @media (max-width: 768px){
+            .header {
+                padding: 1rem;
+            }
+        }
+        @media (min-width: 769px){
+            
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Header semántico para mejorar la estructura -->
+    <header class="header">
+        <!-- Logo con alt descriptivo -->
+        <img src="logo.svg" alt="Logo Chocolate Artesanal" style="width: 100%; ">
+
+        <!-- Navegación principal con enlaces descriptivos -->
+        <nav>
+            <ul>
+                <li><a href="/productos">Nuestros Chocolates</a></li>
+                <li><a href="/origin">Origen y Proceso</a></li>
+                <li><a href="/blog">Blog de Chocolate</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Contenido principal-->
+    <main class="main-content">
+        <!-- H1 único y optimizado -->
+        <h1>Cocholate orgánico Premium de R.D.</h1>
+
+        <!--Sección de productos con estructura jerárquica de encabezados-->
+        <section>
+            <h2>Nuestras variedades de Chocolate</h2>
+
+            <!--Artículo individual con contenido enriquecido-->
+            <article>
+                <h3>Chocolate con Leche</h3>
+                <img src="chocolate-leche.jpg" atl="Chocolate con leche" />
+                <p>Descubre el sabor único de nuestro chocolate con leche, 
+                    cultivado y preparado con leche de chiva.</p>
+            </article>
+
+            <article>
+                <h3>Chocolate Puro</h3>
+                <img src="chocolate-puro.jpg" atl="Chocolate Puro" />
+                <p>Descubre el sabor único de nuestro chocolate puro, 
+                    cultivado y preparado con leche de chiva.</p>
+            </article>
+        </section>
+
+        <section>
+            <h2>Nuestras variedades de Chocolate</h2>
+
+            <!--Artículo individual con contenido enriquecido-->
+            <article>
+                <h3>Blog de Chocolates</h3>
+                <ul>
+                    <li>
+                        <a href="/blog/preparacion-chocolate">
+                            Guía completa para preparar chocolate perfecto.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/blog/tipos-de-chocolates">
+                            Conoce los diferentes tipos de chocolates.
+                        </a>
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+    </main>
+
+    <footer>
+        <div>
+            <h2>Contacto</h2>
+            <address>
+                Av. Abraham Lincoln, Distrito Nacional, S.D.
+                <a href="tel:+5555555555">555 555 5555</a>
+                <a href="mailto:info@chocolateartesanal.com">info@chocolateartesanal.com</a>
+            </address>
+        </div>
+
+        <div>
+            <h2>Síguenos</h2>
+            <a href="https://facebook.com/chocolateartesanal" aria-label="Síguenos en Facebook">Facebook</a>
+            <a href="https://instagram.com/chocolateartesanal" aria-label="Síguenos en Instagram">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- Scripts al final para mejorar el rendimiento -->
+    <script>
+        // Código Javascript para mejorar la interactividad
+        document.addEventListener('DOMContentLoaded', function(){
+            // Implementación de lazy loading para imágenes
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+        });
+    </script> 
+
+</body>
+</html>

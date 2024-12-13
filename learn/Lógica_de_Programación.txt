@@ -1,0 +1,11 @@
+Definición: 
+Habilidad de pensar de manera estructurada y sistemática para resolver problemas
+mediante instrucciones que una computadora puede ejecutar. Es el fundamento para aprender cualquier
+lenguaje de progración.
+
+Técnicas para desarrollar la lógica de programación:
+1. Resolución de problemas paso a paso (pensamiento algorítmico).
+2. Uso de diagramas de flujo y pseudocódigo.
+3. Práctica con ejercicios de lógica y acertijos.
+4. Descomposición de problemas grandes en partes más pequeñas.
+5. Identificación de patrones y estructuras repetitivas.
