@@ -1,0 +1,15 @@
+body {
+    font-size: 18px;
+}
+
+button {
+    color: #fff;
+    background-color: #007bff;
+}
+
+
+@media (max-width: 768px){
+    body {
+        font-size: 14px;
+    }
+}

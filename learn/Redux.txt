@@ -1,0 +1,7 @@
+Porqué usar Redux?
+
+- Gestión centralizada del estado.
+- Flujo de datos predecible.
+- Depuración más fácil.
+- Caché y persistencia simplificadas.
+- Mejor mantenibilidad en aplicaciones grandes.

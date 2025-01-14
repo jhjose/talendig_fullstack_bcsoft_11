@@ -78,7 +78,7 @@ const dbOperations = {
                 if(err) reject(err);
 
                 // Parsear las opciones de JSON a Array
-                const questions = results.map(q => ({
+                const questions = results?.map(q => ({
                     ...q,
                     options: JSON.parse(q.options)
                 }));

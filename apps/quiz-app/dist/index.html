@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz en Tiempo Real</title>
+  <script type="module" crossorigin src="/assets/index-Be-3JAzl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CW1k5jao.css">
+</head>
+<body>
+    <div id="login-screen">
+        <h2>Ingresa tu nombre</h2>
+        <input type="text" id="student-name" placeholder="Tu nombre">
+        <button id="join-btn">Unirse</button>
+
+        <!--Botón para modo profesor-->
+        <button id="teacher-mode-btn">Modo Profesor</button>
+    </div>
+
+    <div id="teacher-login" style="display: none;">
+        <h3>Acceso Profesor</h3>
+        <input type="password" id="teacher-pin" placeholder="Ingrese el PIN">
+        <button id="submit-pin-btn">Acceder</button>
+        <button id="back-to-login-btn">Volver</button>
+    </div>
+
+    <div id="quiz-screen" style="display: none;">
+        <h2 id="question-text"></h2>
+        <div id="options-container"></div>
+        <div id="votes-container"></div>
+
+            <!-- Solo visible para el profesor -->
+        <div id="teacher-controls">
+            <button id="show-answer-btn">Mostrar Respuesta</button>
+            <button id="next-question-btn">Siguiente Pregunta</button>
+        </div>
+    </div>
+
+    <!-- Panel de administración de preguntas -->
+    <div id="admin-panel" style="display: none;">
+        <h2>Gestión de Preguntas</h2>
+
+        <!--Formulario para añadir/editar preguntas-->
+        <div id="question-form">
+            <h3 id="form-title">Añadir Nueva Pregunta</h3>
+            <input type="hidden" id="question-id">
+            <div>
+                <label for="question-input">Pregunta:</label>
+                <textarea name="question-input" id="question-input" rows="3"></textarea>
+            </div>
+            <div id="options-inputs">
+                <label>Opciones:</label>
+                <input type="text" class="option-input" placeholder="Opción 1">
+                <input type="text" class="option-input" placeholder="Opción 2">
+                <input type="text" class="option-input" placeholder="Opción 3">
+                <input type="text" class="option-input" placeholder="Opción 4">
+            </div>
+            <div>
+                <label for="correct-answer">Respuesta correcta:</label>
+                <select id="correct-answer"></select>
+            </div>
+            <button id="save-question-btn">Guardar Pregunta</button>\
+            <button id="cancel-edit-btn" style="display: none;">Cancelar</button>
+        </div>
+
+        <!--Lista de preguntas-->
+        <div id="questions-list"></div>
+    </div> 
+
+
+</body>
+</html>

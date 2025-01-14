@@ -1,9 +1,30 @@
 import { io } from 'socket.io-client';
 import './styles.css';
 
-const BACKEND_URL = 'http://localhost:3080';
+const BACKEND_URL = 'https://2a86-170-80-202-224.ngrok-free.app';
 
-const socket = io(BACKEND_URL);
+const socket = io(BACKEND_URL, {
+    transports: ['websocket', 'polling'],
+    reconnection: true,
+    reconnectionAttempts: Infinity,
+    reconnectionDelay: 1000,
+    timeout: 20000,
+    autoConnect: true,
+    forceNew: true
+});
+
+// Añade más manejadores de eventos
+socket.on('disconnect', () => {
+    console.log('Desconectado del servidor');
+});
+
+socket.on('error', (error) => {
+    console.error('Error de socket:', error);
+});
+
+socket.on('reconnect_attempt', () => {
+    console.log('Intentando reconectar...');
+});
 
 // Elementos de DOM
 const loginScreen = document.getElementById('login-screen');
@@ -38,7 +59,7 @@ const teacherPinInput = document.getElementById('teacher-pin');
 const submitPinBtn = document.getElementById('submit-pin-btn');
 const backToLoginBtn = document.getElementById('back-to-login-btn');
 
-const TEACHER_PIN = '852456';
+const TEACHER_PIN = '965841';
 
 
 // Función para cambiar entre pantallas
@@ -272,6 +293,7 @@ function updateVotesDisplay(votesCount){
 
 // Controles del profesor
 showAnswerBtn.addEventListener('click', async ()=>{
+    console.log('BACKEND_URL', BACKEND_URL)
     await fetch(BACKEND_URL + '/api/show-answer');
 });
 

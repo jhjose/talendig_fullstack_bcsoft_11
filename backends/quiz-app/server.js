@@ -11,15 +11,48 @@ const server = http.createServer(app);
 
 app.use(express.json());
 
+// Configurar headers de seguridad
+app.use((req, res, next) => {
+    // Remover cualquier CSP existente
+    res.removeHeader('Content-Security-Policy');
+    
+    // Configurar headers más permisivos
+    res.setHeader(
+        'Content-Security-Policy',
+        "default-src * 'unsafe-eval' 'unsafe-inline'; " +
+        "font-src * data: 'unsafe-inline'; " +
+        "img-src * data: blob: 'unsafe-inline'; " +
+        "script-src * 'unsafe-eval' 'unsafe-inline'; " +
+        "style-src * 'unsafe-inline'; " +
+        "connect-src * ws: wss:;"
+    );
+    next();
+});
+
 app.use(cors({
-    origin: "http://localhost:3070",
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    origin: [
+        'http://192.168.100.17:3070',
+        'http://localhost:3070',
+        'https://0cef6ff20d95.ngrok.app',
+        // Permitir acceso desde cualquier IP en tu red local
+        /^http:\/\/192\.168\.\d+\.\d+:\d+$/
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3070", // Frontend Vite default port
-        methods: ['GET', 'POST', 'PUT', 'DELETE']
+        origin: [
+            'http://192.168.100.17:3070',
+            'http://localhost:3070',
+            'https://0cef6ff20d95.ngrok.app',
+            /^http:\/\/192\.168\.\d+\.\d+:\d+$/
+        ],
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        credentials: true,
+        allowedHeaders: ['Content-Type', 'Authorization']
     }
 });
 
@@ -129,7 +162,7 @@ app.delete('/api/questions/:id', async (req, res)=>{
 // API para el profesor
 app.get('/api/show-answer', (req, res)=>{
     showingAnswer = true;
-
+    console.log('questions[currentQuestionIndex].correctAnswer', questions[currentQuestionIndex].correctAnswer)
     io.emit('show-answer', questions[currentQuestionIndex].correctAnswer);
     
     res.json({success: true});
@@ -147,8 +180,9 @@ app.get('/api/next-question', (req, res)=>{
     res.json({success: true});
 });
 
+const HOST = "0.0.0.0";
 const PORT = 3080;
 
-server.listen(PORT, ()=>{
-    console.log(`Server running on http://localhost:${PORT}`);
+server.listen(PORT, HOST, ()=>{
+    console.log(`Server running on http://${HOST}:${PORT}`);
 });
